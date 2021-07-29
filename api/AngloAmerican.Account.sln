@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngloAmerican.Account.Api", "AngloAmerican.Account.Api\AngloAmerican.Account.Api.csproj", "{13527B73-8075-4811-A767-769C874E7D08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngloAmerican.Account.Api", "AngloAmerican.Account.Api\AngloAmerican.Account.Api.csproj", "{13527B73-8075-4811-A767-769C874E7D08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngloAmerican.Account.Services", "AngloAmerican.Account.Services\AngloAmerican.Account.Services.csproj", "{BE3991B9-5861-47C6-9F95-C21DEEE95E8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngloAmerican.Account.Services", "AngloAmerican.Account.Services\AngloAmerican.Account.Services.csproj", "{BE3991B9-5861-47C6-9F95-C21DEEE95E8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngloAmerican.Account.Service.Tests", "AngloAmerican.Account.Service.Tests\AngloAmerican.Account.Service.Tests.csproj", "{2469E56D-2E44-48F7-B51B-731764409561}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{BE3991B9-5861-47C6-9F95-C21DEEE95E8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE3991B9-5861-47C6-9F95-C21DEEE95E8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE3991B9-5861-47C6-9F95-C21DEEE95E8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2469E56D-2E44-48F7-B51B-731764409561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2469E56D-2E44-48F7-B51B-731764409561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2469E56D-2E44-48F7-B51B-731764409561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2469E56D-2E44-48F7-B51B-731764409561}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

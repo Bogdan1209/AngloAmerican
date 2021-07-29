@@ -1,43 +1,42 @@
-﻿using System;
+﻿using AngloAmerican.Account.Services.Abstaract;
+//using AngloAmerican.Account.Common;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AngloAmerican.Account.Services
 {
     /* TODO
         - Refactor the class and add Unit Tests
     */
-    public class BalanceChecker
+    public class BalanceChecker : IBalanceChecker
     {
-        public bool Process(int amount, Notification notification, ExternalApi eA, string lastName)
+        public bool Process(int amount, INotificationService notificationService, IBankAccountApi externalApi, string lastName)
         {
-            var emailTitle = "";
-            if (DateTime.Now.Day < 15)
-            {
-                emailTitle = "<h1>Info about days till Middle of the month</h1>";
-            }
-            else
-            {
-                emailTitle = "<h1>Info about days till End of the month</h1>";
-            }
+            //We can create struct like FakeDateTime to test it, but i'm not sure it's really good idea.
+            var emailTitle = DateTime.Now.Day < 15 ?
+                "<h1>Info about days till Middle of the month</h1>" :
+                "<h1>Info about days till End of the month</h1>";
 
             var emailBody = "<p>Body placeholder<p>";
-            var m = emailTitle + "\n" + emailBody;
+
+            if (amount > 10000)
+            {
+                var message = emailTitle + "\n" + emailBody;
+                notificationService.SendMessage(message);
+                return externalApi.CheckAccountBalance(amount, lastName);
+            }
 
             if (amount < 10000)
             {
-                notification.SendEmail(emailTitle, emailBody);
-            }
-            if (amount > 10000)
-            {
-                notification.SendMessage(m);
-                return eA.CheckAccountBalance(amount, lastName);
+                notificationService.SendEmail(emailTitle, emailBody);
             }
 
             return true;
         }
     }
 
-    public class Notification
+    public class NotificationService : INotificationService
     {
         public void SendEmail(string title, string body)
         {
@@ -52,35 +51,21 @@ namespace AngloAmerican.Account.Services
 
 
     // TODO: Improve and make the code more readable.
-    public class ExternalApi
+    public class BankAccountApi : IBankAccountApi
     {
-        private List<string> _names = new List<string> {"Rene", "Kirk", "Escarole"};
+        private List<string> _names = new List<string> { "Rene", "Kirk", "Escarole" };
 
-        // returns true if balance is valid
         public bool CheckAccountBalance(int amount, string lastName)
         {
-            bool isFalse = false;
+            //Using negative conditions is bad practice.
+            //return !_names.Any(n => n == lastName && amount >= 10000);
 
-            // if the person is in the list and balance is greater than 10,000 return false
-            foreach (var n in _names)
+            if (_names.Any(n => n == lastName))
             {
-                isFalse = true;
-                if (n == lastName)
-                {
-                    if (amount > 10000)
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
-                    }
-                }
-
-                return isFalse;
+                return amount <= 10000;
             }
 
-            return isFalse;
+            return true;
         }
     }
 }
