@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AngloAmerican.Account.Services.Abstaract
+namespace AngloAmerican.Account.Services.Abstract
 {
     public interface IBankAccountApi
     {

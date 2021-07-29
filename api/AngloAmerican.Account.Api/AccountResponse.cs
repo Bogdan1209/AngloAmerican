@@ -1,4 +1,6 @@
-﻿namespace AngloAmerican.Account.Api
+﻿using AngloAmerican.Account.Services;
+
+namespace AngloAmerican.Account.Api
 {
     public class AccountResponse
     {

@@ -1,6 +1,6 @@
-﻿namespace AngloAmerican.Account.Api
+﻿namespace AngloAmerican.AccountType.Service.Models
 {
-    public class AccountType
+    public class AccountTypeModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

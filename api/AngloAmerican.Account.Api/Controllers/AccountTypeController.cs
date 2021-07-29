@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using AngloAmerican.AccountType.Service.Abstract;
+using AngloAmerican.AccountType.Service.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AngloAmerican.Account.Api.Controllers
@@ -7,17 +10,16 @@ namespace AngloAmerican.Account.Api.Controllers
     [Route("accounttype")]
     public class AccountTypeController : ControllerBase
     {
-
-        /* TODO
-            - Create a REST API to get all the account types
-         */
-       
-        private List<AccountType> GetTypes()
-            => new List<AccountType>
-            {
-                new AccountType {Id = 1, Name = "Bronze"},
-                new AccountType {Id = 2, Name = "Silver"},
-                new AccountType {Id = 3, Name = "Gold"}
-            };
+        readonly private IAccountTypeRepository _accountTypeRepository;
+        public AccountTypeController(
+            IAccountTypeRepository accountTypeRepository)
+        {
+            _accountTypeRepository = accountTypeRepository;
+        }
+        public List<AccountTypeModel> Get()
+        {
+            return _accountTypeRepository.GetAllAccountTypes();
+        }
+        
     }
 }

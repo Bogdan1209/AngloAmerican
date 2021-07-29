@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using AngloAmerican.Account.Services.Abstract;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AngloAmerican.Account.Services
 {
-    public class AccountRepository
+    //I would like to move this class to DAL project
+    public class AccountRepository: IAccountRepository
     {
         private List<AccountModel> _accounts;
 

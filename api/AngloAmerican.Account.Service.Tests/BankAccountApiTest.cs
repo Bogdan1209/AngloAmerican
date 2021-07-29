@@ -1,4 +1,4 @@
-﻿using AngloAmerican.Account.Services.Abstaract;
+﻿using AngloAmerican.Account.Services.Abstract;
 using Xunit;
 
 namespace AngloAmerican.Account.Service.Tests

@@ -1,20 +1,22 @@
 ﻿using System.Net.Http;
+using System.Threading.Tasks;
+using AngloAmerican.Account.Services.Abstract;
 using Newtonsoft.Json;
 
 namespace AngloAmerican.Account.Services
 {
-    public class AddressService
+    public class AddressService: IAddressService
     {
 
         /* TODO
             - Improve the usage of HttpClient in GetAddress method
          */
-        public string GetAddress()
+        public async Task<string> GetAddress()
         {
             var http = new HttpClient();
-            var response = http.GetAsync("https://randomuser.me/api/?nat=gb");
-            var content = response.Result.Content;
-            var adr = content.ReadAsStringAsync().Result;
+            var response =  await http.GetAsync("https://randomuser.me/api/?nat=gb");
+            var content = response.Content;
+            var adr = await content.ReadAsStringAsync();
 
             var address = GetCityAndPostCode(adr);
 
