@@ -34,16 +34,21 @@ export class AccountComponent implements OnInit {
   public selectedTypeSubject = new Subject<number>();
 
   ngOnInit(): void {
-    this.accountTypeService.getAccountTypes()
-      .subscribe((result: AccountTypeModel[]) => {
-        this.accountTypes = result, this.getAccounts(result)
-      })
+    this.getAccountTypes();
     this.selectedTypeSubject.subscribe({ next: this.filterAccounts.bind(this) });
     this.filterAccounts(0);
   }
 
   filterAccounts(typeId: number) {
     return this.filteredAccounts = this.accounts?.filter(a => a.typeId === typeId) ?? []
+  }
+
+  getAccountTypes() {
+    this.accountTypeService.getAccountTypes()
+      .subscribe((result: AccountTypeModel[]) => {
+        this.accountTypes = result;
+        this.getAccounts(result);
+      })
   }
 
   getAccounts(accountTypes): void {

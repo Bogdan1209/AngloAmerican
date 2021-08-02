@@ -25,4 +25,9 @@ describe('NewAccountComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render form', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('#accountForm')).toBeTruthy();
+  })
 });

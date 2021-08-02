@@ -38,7 +38,7 @@ namespace AngloAmerican.Account.Services
             }
             catch
             {
-                return "Data cannpt be loaded";
+                return "Data cannot be loaded";
             }
         }
     }

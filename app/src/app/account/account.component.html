@@ -14,17 +14,16 @@
     </thead>
     <tbody>
       <tr *ngFor="let account of filteredAccounts">
-        <!--      TODO: Uncomment below-->
-        <td>{{account.firstName}}</td>
-        <td>{{account.lastName}}</td>
-        <td>{{account.accountType}}</td>
-        <td>{{account.balance}}</td>
-        <td>{{account.address}}</td>
+        <td class="first-name">{{account.firstName}}</td>
+        <td class="last-name">{{account.lastName}}</td>
+        <td class="account-type">{{account.accountType}}</td>
+        <td class="balance">{{account.balance}}</td>
+        <td class="address">{{account.address}}</td>
       </tr>
     </tbody>
   </table>
 
   <div>
-    <button type="button" class="btn btn-primary" (click)="openNewAccount()">Add</button>
+    <button type="button" class="btn btn-primary" id="add-account" (click)="openNewAccount()">Add</button>
   </div>
 </div>
