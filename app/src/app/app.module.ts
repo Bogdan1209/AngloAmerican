@@ -7,18 +7,24 @@ import { AccountComponent } from './account/account.component';
 import { AccountTypeComponent } from './account-type/account-type.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewAccountComponent } from './new-account/new-account.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccountComponent,
     AccountTypeComponent,
-    NewAccountComponent
+    NewAccountComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

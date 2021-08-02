@@ -1,9 +1,10 @@
-﻿using AngloAmerican.Account.Services;
+﻿using AngloAmerican.Account.Api.Abstract;
+using AngloAmerican.Account.Api.Controllers;
+using AngloAmerican.Account.Services;
 using AngloAmerican.Account.Services.Abstract;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AngloAmerican.Account.Service.Tests
 {
@@ -13,6 +14,11 @@ namespace AngloAmerican.Account.Service.Tests
         {
             services.AddTransient<IBankAccountApi, BankAccountApi>();
             services.AddTransient<IBalanceChecker, BalanceChecker>();
+            services.AddTransient<IAccountController, AccountController>();
+        }
+
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
         }
     }
 }

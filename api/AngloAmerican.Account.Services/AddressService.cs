@@ -1,11 +1,12 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
-using AngloAmerican.Account.Services.Abstract;
+﻿using AngloAmerican.Account.Services.Abstract;
 using Newtonsoft.Json;
+//using Newtonsoft.Json;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace AngloAmerican.Account.Services
 {
-    public class AddressService: IAddressService
+    public class AddressService : IAddressService
     {
 
         /* TODO
@@ -14,7 +15,7 @@ namespace AngloAmerican.Account.Services
         public async Task<string> GetAddress()
         {
             var http = new HttpClient();
-            var response =  await http.GetAsync("https://randomuser.me/api/?nat=gb");
+            var response = await http.GetAsync("https://randomuser.me/api/?nat=gb");
             var content = response.Content;
             var adr = await content.ReadAsStringAsync();
 
@@ -25,13 +26,20 @@ namespace AngloAmerican.Account.Services
 
         private string GetCityAndPostCode(string json)
         {
-            dynamic jsonObject = JsonConvert.DeserializeObject<dynamic>(json);
-            dynamic city = jsonObject.results[0].location.city;
-            dynamic postcode = jsonObject.results[0].location.postcode;
+            try
+            {
+                dynamic jsonObject = JsonConvert.DeserializeObject<dynamic>(json);
+                dynamic city = jsonObject.results[0].location.city;
+                dynamic postcode = jsonObject.results[0].location.postcode;
 
-            var address = $"{city.ToString()} {postcode.ToString()}";
+                var address = $"{city.ToString()} {postcode.ToString()}";
 
-            return address;
+                return address;
+            }
+            catch
+            {
+                return "Data cannpt be loaded";
+            }
         }
     }
 }

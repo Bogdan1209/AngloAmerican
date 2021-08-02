@@ -1,13 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using AngloAmerican.AccountType.Service.Abstract;
+﻿using AngloAmerican.AccountType.Service.Abstract;
 using AngloAmerican.AccountType.Service.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace AngloAmerican.Account.Api.Controllers
 {
     [ApiController]
-    [Route("accounttype")]
+    [Route("accountTypes")]
     public class AccountTypeController : ControllerBase
     {
         readonly private IAccountTypeRepository _accountTypeRepository;
@@ -20,6 +19,6 @@ namespace AngloAmerican.Account.Api.Controllers
         {
             return _accountTypeRepository.GetAllAccountTypes();
         }
-        
+
     }
 }

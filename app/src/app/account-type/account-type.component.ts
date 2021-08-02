@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { Observable, of, Subject } from 'rxjs';
+//import { EventEmitter } from 'stream';
 import { AccountTypeModel } from './account-type.model';
 
 @Component({
@@ -15,9 +17,15 @@ export class AccountTypeComponent implements OnInit {
   constructor() {
   }
 
-  public accountTypes: AccountTypeModel[];
+  @Input() accountTypes: AccountTypeModel[];
+  @Input() selectedTypeSubject = new Subject<number>();
 
   ngOnInit(): void {
+
   }
 
+  onChange(e) {
+    const select = e.target as HTMLSelectElement
+    this.selectedTypeSubject.next(+select.value)
+  };
 }

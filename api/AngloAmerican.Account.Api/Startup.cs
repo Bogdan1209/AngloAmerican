@@ -1,14 +1,14 @@
+﻿using AngloAmerican.Account.Services;
+using AngloAmerican.Account.Services.Abstract;
+using AngloAmerican.AccountType.Service;
+using AngloAmerican.AccountType.Service.Abstract;
 using AngloAmerican.Common.Abstract;
 using AngloAmerican.Common.Utils;
-using AngloAmerican.Account.Services;
-using AngloAmerican.Account.Services.Abstract;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using AngloAmerican.AccountType.Service.Abstract;
-using AngloAmerican.AccountType.Service;
 
 namespace AngloAmerican.Account.Api
 {
@@ -34,7 +34,7 @@ namespace AngloAmerican.Account.Api
                         .AllowAnyMethod();
                 }));
 
-            services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddSingleton<IAccountRepository, AccountRepository>();
             services.AddScoped<IAddressService, AddressService>();
             services.AddSingleton<IMyBeautifulMapper, MyBeautifulMapper>();
             services.AddSingleton<IAccountTypeService, AccountTypeService>();
