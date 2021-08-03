@@ -68,7 +68,7 @@ namespace AngloAmerican.Account.Api.Controllers
                 }));
             }
 
-            Task.WaitAll(tasks.ToArray());
+            await Task.WhenAll(tasks.ToArray());
 
             return accountDtos;
         }

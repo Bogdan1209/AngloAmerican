@@ -34,6 +34,7 @@ namespace AngloAmerican.Account.Api
                         .AllowAnyMethod();
                 }));
 
+            services.AddHttpClient();
             services.AddSingleton<IAccountRepository, AccountRepository>();
             services.AddScoped<IAddressService, AddressService>();
             services.AddSingleton<IMyBeautifulMapper, MyBeautifulMapper>();

@@ -1,6 +1,5 @@
 ﻿using AngloAmerican.Account.Services.Abstract;
 using Newtonsoft.Json;
-//using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -8,13 +7,18 @@ namespace AngloAmerican.Account.Services
 {
     public class AddressService : IAddressService
     {
+        private readonly IHttpClientFactory _clientFactory;
+        public AddressService(IHttpClientFactory clientFactory)
+        {
+            _clientFactory = clientFactory;
+        }
 
         /* TODO
             - Improve the usage of HttpClient in GetAddress method
          */
         public async Task<string> GetAddress()
         {
-            var http = new HttpClient();
+            var http = _clientFactory.CreateClient();
             var response = await http.GetAsync("https://randomuser.me/api/?nat=gb");
             var content = response.Content;
             var adr = await content.ReadAsStringAsync();

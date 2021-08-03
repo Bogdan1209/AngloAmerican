@@ -1,7 +1,5 @@
 ﻿using AngloAmerican.Account.Services;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.AspNetCore.TestHost;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -11,12 +9,9 @@ namespace AngloAmerican.Account.Service.Tests
 {
     public class AccountControllerTest : IClassFixture<WebApplicationFactory<Api.Startup>>
     {
-        private readonly TestServer _server;
         private readonly HttpClient _client;
         public AccountControllerTest(WebApplicationFactory<Api.Startup> fixture)
         {
-            _server = new TestServer(new WebHostBuilder()
-          .UseStartup<Startup>());
             _client = fixture.CreateClient();
         }
 
