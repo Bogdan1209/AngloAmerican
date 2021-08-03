@@ -1,6 +1,5 @@
-using AngloAmerican.Account.Services.Abstract;
+﻿using AngloAmerican.Account.Services.Abstract;
 using Moq;
-using System;
 using Xunit;
 
 namespace AngloAmerican.Account.Service.Tests
@@ -10,7 +9,8 @@ namespace AngloAmerican.Account.Service.Tests
         private readonly IBalanceChecker _balanceChecker;
         private readonly Mock<IBankAccountApi> _mockBankAccountApi;
         private readonly Mock<INotificationService> _mockNotificationService;
-        public BalanceCheckerTests(IBalanceChecker balanceChecker) { 
+        public BalanceCheckerTests(IBalanceChecker balanceChecker)
+        {
             _balanceChecker = balanceChecker;
             _mockNotificationService = new Mock<INotificationService>();
             _mockBankAccountApi = new Mock<IBankAccountApi>();
@@ -41,8 +41,7 @@ namespace AngloAmerican.Account.Service.Tests
         {
             var result = _balanceChecker.Process(10000, _mockNotificationService.Object, _mockBankAccountApi.Object, It.IsAny<string>());
 
-            _mockNotificationService.Verify(m => m.SendEmail(It.IsAny<string>(), It.IsAny<string>()), Times.Never());
-            _mockNotificationService.Verify(m => m.SendMessage(It.IsAny<string>()), Times.Never());
+            _mockNotificationService.Verify(m => m.SendMessage(It.IsAny<string>()), Times.Once());
         }
     }
 }

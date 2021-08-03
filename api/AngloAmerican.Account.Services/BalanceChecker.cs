@@ -31,6 +31,11 @@ namespace AngloAmerican.Account.Services
                 notificationService.SendEmail(emailTitle, emailBody);
             }
 
+            if (amount == 10000)
+            {
+                notificationService.SendMessage("You are so rich but not enough to get Gold account. Please earn one more dollar");
+            }
+
             return true;
         }
     }
